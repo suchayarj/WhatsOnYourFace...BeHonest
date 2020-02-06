@@ -23,7 +23,7 @@ Webscrape (BeautifulSoup) --> Pandas DataFrame --> EDA / Text Analysis using NLT
     Sephora, who's infamous for fake reviews, has average rating of approximately 4.3, while Makeup Alley has lower average at around 3.7. 70% of the rating on Sephora were 5 stars, which could be an indicator of fake reviews. On the other hand, Makeup Alley rating distribution seems more fair and authentic, with 4 stars being around 40%, while 2, 3, and 5 stars are about the same portion.
 
 <p align="center">
-  <img src="imgs/RatingDist.png">
+  <img src="imgs/Ratingdist.png">
 </p>
 
 - Reviews:
