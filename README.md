@@ -1,29 +1,35 @@
 # What's on Your Face!?...Be Honest
 
 **MOTIVATION**
-
-My goal is to create a predictive model to identify authentic/honest reviews on Sephora website utilizing One Class Classfication Support Vector Machine
+<p align="center">
+    <img src="imgs/sephora.jpg">
+    </p>
+My goal is to create a predictive model to identify fake/deceptive reviews on Sephora website utilizing One-Class Classfication Support Vector Machine
 
 My curiosity in beauty industry has gone beyond finding out what kind of chemicals are used in cosmetics. (See my past project https://github.com/suchayarj/WhatsOnYourFace)
 
-Online marketplace has become the dominant platform for people to buy and trade. Fake online reviews are definitely unavoidable. A few years back, there was a fake review scandal on Sunday Riley Company where it sent out emails to employees forcing them to write fake reviews on Sephora given a quite thorough walkthrough, i.e. turn off cookie and review a few products that are not SR before actually review SR, which made it even harder for web users to differentiate it from authentic reviews. 
+Online marketplace has become the dominant platform for people to buy and trade. Fake online reviews are definitely unavoidable. A few years back, there was a fake review scandal on Sunday Riley Company, where it forced its employees to write fake reviews on Sephora given a quite thorough walkthrough on how not to be caught as fake. I found it challenging and inspired to develop a model that's able to detect a pattern of fake reviews.
 
 **WORKFLOW**
 
-Collect data--> Pandas DataFrame --> EDA / Text Analysis using NLTK(Tokenized, Vectorized) --> One Class Classification SVM Model
+Collect data > Load into Pandas DataFrame > EDA > Natural Languange Processing > One Class Classification SVM Model
 
 **DATASET**
 - Makeup dataset
-    - **Training set** : creating my own dataset by performing a webscape from skincare category on www.makeupalley.com. Dataset consists of approximately 230,000 entries. I am treating reviews from this website as **authentic** since this website's sole purpose is for beauty community to share honest reviews, while Sephora or Ulta or other beauty sites are trying to sell products  
-    - **Testing set**: using existing dataset from (github links) reviews scraped from skincare category on www.sephora.com. Reviews from Sephora are more diverse. It consists of both authentic and fake. 
-- Dataset used to tune parameters
-    - **Yelp Review Dataset** from https://github.com/zzhang83/Yelp_Sentiment_Analysis. The reviews had been labeled to True & Deceptive. I need this in order to tune my model since one class SVM is unsupervised
+    - **Training set** : creating my own dataset by performing a webscape from skincare category on www.makeupalley.com. 
+        - Dataset consists of approximately 230,000 entries, containing columns like Review Text, Rating, Product Name, Brand Name, User Name, and User Skin Types. 
+        - I will be using only the review text and rating of the reviews to train the model. 
+        - I am treating reviews from this website as **authentic** since this website's sole purpose is for beauty community to share honest reviews, while Sephora was made to sell products  
+    - **Testing set**: using existing sephora reviews dataset from Github, focusing on skincare category. 
+        - Reviews from Sephora are more diverse. It consists of both authentic and fake. 
+- Dataset used to evaluate the model 
+    - **Yelp Review Dataset** from https://github.com/zzhang83/Yelp_Sentiment_Analysis. The reviews had been labeled to True & Deceptive. I need this in order to tune my model since one class SVM is unsupervised and I need to assure that my model works with labeled data before deploying
 
 **EDA/Text Analysis**
-- clean dataset (MakeupAlley & Sephora), filter review columns, prep them for text analysis using NLTK
+- Clean dataset (MakeupAlley & Sephora), filter review columns, prep them for text analysis using NLTK
 - Ratings:
     
-    Sephora, who's infamous for fake reviews, has average rating of approximately 4.3, while Makeup Alley has lower average at around 3.7. 70% of the rating on Sephora were 5 stars, which could be an indicator of fake reviews. On the other hand, Makeup Alley rating distribution seems more fair and authentic, with 4 stars being around 40%, while 2, 3, and 5 stars are about the same portion.
+    Sephora has average rating of approximately 4.3, while Makeup Alley has lower average at around 3.7. 70% of the rating on Sephora were 5 stars, which could be an indicator of fake reviews. On the other hand, Makeup Alley rating distribution seems more fair and authentic, with 4 stars being around 40%, while 2, 3, and 5 stars are about the same portion.
 
 <p align="center">
   <img src="imgs/RatingDist.png">
@@ -63,7 +69,8 @@ The one-class SVM is given points only from one class, and expected to learn a s
     </p>
 
 
-- Since One Class Classification SVM is an unsupervised learning, the confusion matrix for the model on Sephora prediction is not avaiable. But with nu = 0.1 on the training dataset, I can be confident that there's at most 10% error in the prediction (allowing 10% outliers)
+- Since One Class Classification SVM is an unsupervised learning, the confusion matrix for the model on Sephora prediction is not avaiable. But with nu = 0.1 on the training dataset, I can be confident that there's at most 10% error in the prediction. **Please note that nu can be adjusted per business use case. 
+
 
 
 **CONCLUSION**
@@ -80,6 +87,6 @@ To improve the model I will...
     - Keep exclamation points since reviews with repeated exclamation points are more likely to be less authentic
 - Test model on the brand that has the scandal
 
-See project utilizing deep learning 
+**See project utilizing neural network**
 https://github.com/suchayarj/WhatsOnYourFace...BeHonest
 
