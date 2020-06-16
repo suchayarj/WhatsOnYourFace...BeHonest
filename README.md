@@ -1,9 +1,7 @@
 # What's on Your Face!?...Be Honest
 
 **MOTIVATION**
-<p align="center">
-    <img src="imgs/sephora.jpg">
-    </p>
+
 My goal is to create a predictive model to identify fake/deceptive reviews on Sephora website utilizing One-Class Classfication Support Vector Machine
 
 My curiosity in beauty industry has gone beyond finding out what kind of chemicals are used in cosmetics. (See my past project https://github.com/suchayarj/WhatsOnYourFace)
