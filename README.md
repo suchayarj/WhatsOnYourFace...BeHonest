@@ -45,7 +45,7 @@ Collect data > Load into Pandas DataFrame > EDA > Natural Languange Processing >
         Makeup Alley and Sephora 50 most used words in reviews are fairly similar.
         However, Makeup Alley words include some negative/contrasting words, while Sephora reviews have more of positive adjectives (See words circled in red)
     <p align="center">
-    <img src="imgs/Reviewlenboxplot.png">
+    <img src="imgs/Wordsused.png">
     </p>
 
 
