@@ -41,23 +41,22 @@ Collect data > Load into Pandas DataFrame > EDA > Natural Languange Processing >
     <img src="imgs/Reviewlenboxplot.png">
     </p>
     
-    - most frequently used word in the reviews
-
-        Frequently used words are pretty similar.
+    - 50 most frequently used word in the reviews
+        Makeup Alley and Sephora 50 most used words in reviews are fairly similar.
+        However, Makeup Alley words include some negative/contrasting words, while Sephora reviews have more of positive adjectives (See words circled in red)
     <p align="center">
-    <img src="imgs/MAwordcloud-clean.png">
-    <img src="imgs/Swordcloud-clean.png">
+    <img src="imgs/Reviewlenboxplot.png">
     </p>
 
 
 **MODEL**
 
 - Since Sephora has both honest & fake reviews, as well as my limited ability in obtaining instances on fake reviews, I decided to use One Class Classification from Support Vector Machine algorithm which is appropriate for Unsupervised Outlier Detection. 
-The one-class SVM is given points only from one class, and expected to learn a separation between members of that class and anything else.
+- The one-class SVM is given points only from one class, and expected to learn a separation between members of that class and anything else during training.
+- One we feed new data to the model, and if that particualar data does not belong to authenric group, it will be classified as 'fake'
+
+**DEVELOP MODEL USING YELP DATASET**
 - Tune parameter using Yelp review dataset since it's labeled so I can evaluate the model's performance. 
-
-- Gridsearch to get the best parameter
-
 - Results of the Yelp model using true reviews only, deceptive reviews only, and mixed Yelp reviews, respectively
    parameter for OneClassSVM I used is nu= 0.1, kernel = 'rbf' (Gaussian), and gamma = 0.1
 <p align="center">
@@ -66,13 +65,14 @@ The one-class SVM is given points only from one class, and expected to learn a s
     <img src= "imgs/halfyelpreview.png">
     </p>
 
-
+**APPLY MAKEUP DATESET TO THE MODEL**
 - Since One Class Classification SVM is an unsupervised learning, the confusion matrix for the model on Sephora prediction is not avaiable. But with nu = 0.1 on the training dataset, I can be confident that there's at most 10% error in the prediction. **Please note that nu can be adjusted per business use case. 
 
 
-
 **CONCLUSION**
-- It seems like the only evidently difference between authentic and non-authentioc groups is the length of the reviews
+- Apparent difference between authentic and fake reviews are:
+    - Length of the reviews: Fake reviews tend to be shorter than Authentic reviews
+    - Type of words used: Fake reviews contained more positives like
 
 **FUTURE WORK**
 
@@ -86,5 +86,5 @@ To improve the model I will...
 - Test model on the brand that has the scandal
 
 **See project utilizing neural network**
-https://github.com/suchayarj/WhatsOnYourFace...BeHonest
+https://github.com/suchayarj/WhatsOnYourFace...FakeOrFact
 
